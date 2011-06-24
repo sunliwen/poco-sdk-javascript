@@ -61,6 +61,7 @@ FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "updateItem:item_name" : "upin",
     "updateItem:image_link" : "upim",
     "updateItem:item_link" : "upil",
+    "updateItem:market_price": "upir",
     "getBoughtTogether:amount" : "rcta",
     "getBoughtTogether:include_item_info" : "rctc",
     "getBoughtTogether:item_id" : "rcti",
@@ -117,6 +118,7 @@ ALL_ATTR_NAMES = {
     'item_link': 1,
     'browsing_history': 1,
     'categories': 1,
+    'market_price': 1
 }
 
 
