@@ -28,14 +28,7 @@
     position: relative;
     overflow: hidden;
     margin: 0px 14px 15px 14px;
-}
-
-
-.tui_item_detail {
-    float: left;
-    position: relative;
-    overflow: hidden;
-    margin: 0px 14px 15px 14px;
+    text-align: center;
 }
 
 
@@ -46,8 +39,19 @@
     width: 52px;
 }
 
+
+.tui_item_detail {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    margin: 0px 14px 15px 14px;
+}
+
 .tui_item_detail .tui_image {
     height: 50px;
+    /*margin:0 10px 0 0;*/
+    margin: 5px;
+    float:left;
 }
 
 
@@ -60,3 +64,20 @@
 .tui_item b {
     color: #f66;
 }
+
+
+/* 快书包 */
+.tui_item img{width:97px; height:97px;}
+.tui_item .tui_image{border:0;height:107px;width:97px }
+.tui_item b { color: #C00000;margin-top:5px;margin-bottom:5px;}
+.tui_item del { color: #C00000;margin-top:5px;margin-bottom:5px;}
+
+.tui_item {
+width: 180px;
+margin: 10px 0px;
+padding: 0px;
+border-right: 1px dashed #DDD;
+overflow: hidden;
+text-align: center;
+}
+.tui_item p { text-align:center;margin-top:5px;margin-bottom:5px;}
