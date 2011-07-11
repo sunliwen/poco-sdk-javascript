@@ -9,7 +9,8 @@ function invokeRequest(url){
     script.src = url;
     script.charset = "utf-8";
     script.async = true;
-    document.getElementsByTagName('script')[0].parentNode.insertBefore(script);
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(script, s);
 }
 
 /*

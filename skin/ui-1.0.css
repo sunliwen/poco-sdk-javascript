@@ -3,14 +3,6 @@
 }
 
 
-/*
-.tui_items ul{height:1%; margin-bottom:5px;}
-.tui_items li{float:left; width:120px;}
-.tui_items li.tui_image {width:48px; margin-right:10px;}
-.tui_items li.tui_image img{height:48px; display:block;}
-
-
-*/
 .tui_item img{width:52px; height:17px;}
 .tui_item p{text-align:left; color:#3f3f3f;}
 .tui_item p a{color:#3f3f3f; text-decoration:none;}
@@ -42,35 +34,47 @@
 
 .tui_item_detail {
     float: left;
+    width: 100%;
     position: relative;
     overflow: hidden;
     margin: 0px 14px 15px 14px;
+    padding:0;text-align:left;vertical-align:middle
+}
+
+.tui_item_detail .tui_title {
+    margin-left: 50px;
 }
 
 .tui_item_detail .tui_image {
     height: 50px;
-    /*margin:0 10px 0 0;*/
-    margin: 5px;
+    margin:0 10px 0 0;
+    /*margin: 5px;*/
     float:left;
 }
 
+.tui_item_detail .tui_price {
+    margin-left: 50px;
+}
 
-.tui_item del {
+
+.tui_item del,.tui_item_detail del {
     color: #666;
     font-size: 11px;
     clear:left;
 }
 
-.tui_item b {
+.tui_item b,.tui_item_detail b {
     color: #f66;
 }
 
+div.tui_clear {display:none;height:10px;clear:left;font-size:0;line-height:0;}
 
 /* 快书包 */
 .tui_item img{width:97px; height:97px;}
 .tui_item .tui_image{border:0;height:107px;width:97px }
-.tui_item b { color: #C00000;margin-top:5px;margin-bottom:5px;}
-.tui_item del { color: #C00000;margin-top:5px;margin-bottom:5px;}
+.tui_item .tui_price, .tui_item_detail .tui_price {color: #C00000}
+.tui_price b{ color:#C00000;margin-top:5px;margin-bottom:5px;}
+.tui_price del{ color:#C00000;margin-top:5px;margin-bottom:5px;}
 
 .tui_item {
 width: 180px;
@@ -81,3 +85,5 @@ overflow: hidden;
 text-align: center;
 }
 .tui_item p { text-align:center;margin-top:5px;margin-bottom:5px;}
+
+
