@@ -66,6 +66,10 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getAlsoViewed:user_id" : "rcvu",
     "removeFavorite:item_id" : "rf_i",
     "removeFavorite:user_id" : "rf_u",
+    "updateCategory:category_id" : "upci",
+    "updateCategory:category_link" : "upcl",
+    "updateCategory:category_name" : "upcn",
+    "updateCategory:parent_categories" : "upcp",
     "getByShoppingCart:amount" : "rcca",
     "getByShoppingCart:include_item_info" : "rccc",
     "getByShoppingCart:shopping_cart" : "rccs",
@@ -80,9 +84,9 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getByBrowsingHistory:include_item_info" : "rchc",
     "getByBrowsingHistory:browsing_history" : "rchh",
     "getByBrowsingHistory:user_id" : "rchu",
-    "placeOrder:order_id": "ploi",
-    "placeOrder:user_id" : "plou",
+    "placeOrder:order_id" : "ploi",
     "placeOrder:order_content" : "ploo",
+    "placeOrder:user_id" : "plou",
     "removeItem:item_id" : "rmii",
     "viewItem:item_id" : "vi_i",
     "viewItem:user_id" : "vi_u",
@@ -92,8 +96,7 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getAlsoBought:user_id" : "rcbu",
     "getByPurchasingHistory:amount" : "rcpa",
     "getByPurchasingHistory:include_item_info" : "rcpc",
-    "getByPurchasingHistory:user_id" : "rcpu"
-};
+    "getByPurchasingHistory:user_id" : "rcpu"};
 
 
 // Generated using ApiServer.packed_request.generateFULL_NAME2MASK_js
@@ -104,6 +107,7 @@ var FULL_NAME2MASK = {
     "getUltimatelyBought" : 4096,
     "getAlsoViewed" : 512,
     "removeFavorite" : 4,
+    "updateCategory" : 65536,
     "getByShoppingCart" : 32768,
     "removeOrderItem" : 32,
     "addOrderItem" : 16,
@@ -113,10 +117,10 @@ var FULL_NAME2MASK = {
     "removeItem" : 256,
     "viewItem" : 1,
     "getAlsoBought" : 1024,
-    "getByPurchasingHistory" : 16384
-};
+    "getByPurchasingHistory" : 16384};
 
 
+// Generated using ApiServer.packed_request.generateALL_ATTR_NAMES_js
 var ALL_ATTR_NAMES = {
     'user_id': 1,
     'description': 1,
@@ -129,12 +133,16 @@ var ALL_ATTR_NAMES = {
     'include_item_info': 1,
     'market_price': 1,
     'score': 1,
+    'category_link': 1,
+    'parent_categories': 1,
     'item_id': 1,
     'item_link': 1,
     'browsing_history': 1,
+    'category_id': 1,
     'shopping_cart': 1,
-    'categories': 1
-};
+    'categories': 1,
+    'category_name': 1};
+
 
 
 PackedRequest.prototype.getUrlArgs = function(callback) {
