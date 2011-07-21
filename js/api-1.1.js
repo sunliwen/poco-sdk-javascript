@@ -45,6 +45,7 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "rateItem:score" : "ri_s",
     "rateItem:user_id" : "ri_u",
     "updateItem:categories" : "upic",
+    "updateItem:cateories" : "upic",
     "updateItem:description" : "upid",
     "updateItem:item_id" : "upii",
     "updateItem:image_link" : "upim",
