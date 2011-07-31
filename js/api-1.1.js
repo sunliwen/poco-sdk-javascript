@@ -79,6 +79,11 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "removeOrderItem:user_id" : "rscu",
     "addOrderItem:item_id" : "asci",
     "addOrderItem:user_id" : "ascu",
+    "getByEachBrowsedItem:amount_for_each_item" : "reba",
+    "getByEachBrowsedItem:include_item_info" : "rebc",
+    "getByEachBrowsedItem:rec_row_max_amount" : "rebr",
+    "getByEachBrowsedItem:user_id" : "rebu",
+    "getByEachBrowsedItem:browsing_history" : "rebh",
     "addFavorite:item_id" : "af_i",
     "addFavorite:user_id" : "af_u",
     "getByBrowsingHistory:amount" : "rcha",
@@ -88,6 +93,10 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "placeOrder:order_id" : "ploi",
     "placeOrder:order_content" : "ploo",
     "placeOrder:user_id" : "plou",
+    "getByEachPurchasedItem:amount_for_each_item" : "repa",
+    "getByEachPurchasedItem:include_item_info" : "repc",
+    "getByEachPurchasedItem:user_id" : "repu",
+    "getByEachPurchasedItem:rec_row_max_amount" : "rept",
     "removeItem:item_id" : "rmii",
     "viewItem:item_id" : "vi_i",
     "viewItem:user_id" : "vi_u",
@@ -97,7 +106,7 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getAlsoBought:user_id" : "rcbu",
     "getByPurchasingHistory:amount" : "rcpa",
     "getByPurchasingHistory:include_item_info" : "rcpc",
-    "getByPurchasingHistory:user_id" : "rcpu"};
+    "getByPurchasingHistory:user_id" : "rcpu"}
 
 
 // Generated using ApiServer.packed_request.generateFULL_NAME2MASK_js
@@ -112,38 +121,15 @@ var FULL_NAME2MASK = {
     "getByShoppingCart" : 32768,
     "removeOrderItem" : 32,
     "addOrderItem" : 16,
+    "getByEachBrowsedItem" : 131072,
     "addFavorite" : 2,
     "getByBrowsingHistory" : 8192,
     "placeOrder" : 64,
+    "getByEachPurchasedItem" : 262144,
     "removeItem" : 256,
     "viewItem" : 1,
     "getAlsoBought" : 1024,
-    "getByPurchasingHistory" : 16384};
-
-
-// Generated using ApiServer.packed_request.generateALL_ATTR_NAMES_js
-var ALL_ATTR_NAMES = {
-    'user_id': 1,
-    'description': 1,
-    'item_name': 1,
-    'price': 1,
-    'order_content': 1,
-    'order_id': 1,
-    'amount': 1,
-    'image_link': 1,
-    'include_item_info': 1,
-    'market_price': 1,
-    'score': 1,
-    'category_link': 1,
-    'parent_categories': 1,
-    'item_id': 1,
-    'item_link': 1,
-    'browsing_history': 1,
-    'category_id': 1,
-    'shopping_cart': 1,
-    'categories': 1,
-    'category_name': 1};
-
+    "getByPurchasingHistory" : 16384}
 
 
 PackedRequest.prototype.getUrlArgs = function(callback) {
