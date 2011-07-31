@@ -186,3 +186,7 @@ tui.PackedRequest = PackedRequest;
 window.tui = tui;
 
 })(window);
+
+function tjbCallback(data){
+    // should be overide
+}
