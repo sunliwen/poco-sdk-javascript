@@ -79,6 +79,9 @@ function tjbCallback(data) {
             else if (response_full_name == "getByPurchasingHistory") {
                 callbackByPurchasingHistory(response);
             }
+            else if (response_full_name == "getByEachBrowsedItem") {
+                callbackByEachBrowsedItem(response);
+            }
             else if (response_full_name == "getByEachPurchasedItem") {
                 callbackByEachPurchasedItem(response);
             }
@@ -113,6 +116,26 @@ function callbackByShoppingCart(json) {
         jQuery("#byShoppingCartItems").html(output);
     }
 }
+
+
+function callbackByEachBrowsedItem(json) {
+    var result = json['result'];
+    var output = '';
+    jQuery.each(result, function(index, result_row) {
+        output += '<div class="clearfix goodsBox">';
+        output += itemTemplate(result_row.by_item);
+        jQuery.each(result_row.topn, function(index, topn_item) {
+            output += itemTemplate(topn_item);
+        });
+        output += '</div>';
+    });
+    if(output.length >0){
+        output += '<div class="clearbox"></div>';
+        jQuery("#byEachBrowsedItemWrapper").toggle();
+        jQuery("#byEachBrowsedItem").html(output);
+    }
+}
+
 
 function callbackByEachPurchasedItem(json) {
     var result = json['result'];
