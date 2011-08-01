@@ -118,16 +118,17 @@ function callbackByEachPurchasedItem(json) {
     var result = json['result'];
     var output = '';
     jQuery.each(result, function(index, result_row) {
+        output += '<div class="clearfix goodsBox">';
         output += itemTemplate(result_row.by_item);
         jQuery.each(result_row.topn, function(index, topn_item) {
             output += itemTemplate(topn_item);
         });
-        output += '<br/>';
+        output += '</div>';
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
         jQuery("#byEachPurchasedItemWrapper").toggle();
-        jQuery("#byEachPurchasedItems").html(output);
+        jQuery("#byEachPurchasedItem").html(output);
     }
 }
 
