@@ -1,5 +1,4 @@
 function cut(text, num) {
-  document.write(text.length);
   if (text.length > num) {
     text = text.substring(0, num - 3) + "...";
   }
