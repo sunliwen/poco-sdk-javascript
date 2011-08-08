@@ -19,20 +19,6 @@ function itemTemplate(value) {
     return line;
 }
 
-function avItemTemplate(value) {
-    line  = '<div class="tui_item">';
-    line += '   <a href="' + value['item_link'] + '"><img src="' + value['image_link'] + '" alt="' + value['item_name'] + '" class="tui_image" /></a><br />';
-    line += '   <p><a href="' + value['item_link'] + '" title="' + value['item_name'] + '">' + value['item_name'] + '</a></p>';
-
-    line += '<div class="tui_price"><b>' + value['price'] + '</b>';
-    if(typeof(value['market_price']) != 'undefined'){
-        line += ' | <del>' + value['market_price'] + '</del>';
-    }
-    line += '</div>';
-    line += '</div>';
-    return line;
-}
-
 function vubItemTemplate(value) {
     var line = '';
     line += '<li>';
