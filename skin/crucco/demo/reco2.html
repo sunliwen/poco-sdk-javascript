@@ -1,0 +1,34 @@
+<h1>假设顾客将 <a href="http://www.crucco.com/goods-2685.html">双袋抽绳长裙</a> 和  <a href="http://www.crucco.com/goods-1024.html">牛仔拼碎花衬衫裙</a> 添加进了购物车</h1>
+<hr />
+
+<div class="tui_clear"></div>
+
+<div id="byShoppingCartWrapper" class="tui_wrapper" style="display:none">
+    <p><span>则根据购物车中的商品向其推荐</span></p>
+    <div id="byShoppingCartItems" class="tui_items"></div>
+</div>
+
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://api.tuijianbao.net/js/api-1.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://api.tuijianbao.net/skin/crucco/ui-1.0.min.js"></script>
+<link type="text/css" rel="stylesheet" href="http://www.crucco.com/themes/crucco/style.css" /> 
+<link type="text/css" rel="stylesheet" href="http://api.tuijianbao.net/skin/crucco/style-1.0.css" />
+
+<script type="text/javascript" language="javascript" >
+function loadTjbData(user_id){
+
+    var goods_list = [];
+
+    goods_list.push("2685");                                                  // 添加当前购物车中所有商品ID
+    goods_list.push("1024");                                                  // 添加当前购物车中所有商品ID
+    
+    var user_id = '116815';                                                     
+    var req = new tui.PackedRequest("9647b338");
+    req.addRequest("getByShoppingCart", {"user_id": user_id,                  // 添加当前用户ID
+                                   "shopping_cart": goods_list.join(","),
+                               "include_item_info": "yes", 
+                                          "amount": "10"});                    // 返回推荐结果个数
+    req.invoke("tjbCallback");
+}
+loadTjbData();
+</script>
