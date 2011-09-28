@@ -40,10 +40,13 @@ PackedRequest.prototype.addRequest = function(full_name, request) {
 };
 
 // Generated using ApiServer.packed_request.generateFULL_NAME_ATTR_NAME2FULL_ABBR_NAME_js
+// # WARNING: output of generateFULL_NAME_ATTR_NAME2FULL_ABBR_NAME_js DOES NOT contain the hacky "updateItem:cateories" (cateories lacks "g")
 var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "rateItem:item_id" : "ri_i",
     "rateItem:score" : "ri_s",
     "rateItem:user_id" : "ri_u",
+    "unlike:item_id" : "ulki",
+    "unlike:user_id" : "ulku",
     "updateItem:categories" : "upic",
     "updateItem:cateories" : "upic",
     "updateItem:description" : "upid",
@@ -112,6 +115,7 @@ var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
 // Generated using ApiServer.packed_request.generateFULL_NAME2MASK_js
 var FULL_NAME2MASK = {
     "rateItem" : 8,
+    "unlike" : 524288,
     "updateItem" : 128,
     "getBoughtTogether" : 2048,
     "getUltimatelyBought" : 4096,
