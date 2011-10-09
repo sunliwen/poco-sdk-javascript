@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+
+.tui_wrapper{
+    clear: both;   
+}
+
+</style>
+</head>
+<body style="background:none">
+
+<div class="tui_clear"></div>
+<h1><a href="http://buy.yesky.com/product.action?productId=665340002">金士顿 DDR3 1333 4G 笔记本内存</a> </h1>
+<hr />
+
+<div class="tui_clear"></div>
+
+
+<div class="tui_wrapper" id="boughtTogetherWrapper" style="display:none">
+    <h3><span>经常一起购买的商品-Bought Together</span></h3>
+    <div id="boughtTogetherItems" class="tui_items"></div>
+</div>
+
+<div class="tui_clear"></div>
+
+<div class="tui_wrapper" id="viewedUltimatelyBoughtWrapper" style="display:none">
+    <h3><span>浏览过本商品的用户最终购买了-Ultimately Bought</span></h3>
+    <ul id="viewedUltimatelyBoughtItems" class="tui_items"></ul>
+</div>
+
+<div class="tui_clear"></div>
+
+<div class="tui_wrapper" id="alsoBoughtWrapper" style="display:none">
+    <h3><span>购买过本商品的用户还购买过-Also Bought</span></h3>
+    <div id="alsoBoughtItems" class="tui_items"></div>
+</div>
+
+
+<div class="tui_wrapper" id="alsoViewedWrapper" style="display:none">
+    <h3><span>浏览过本商品的用户还浏览过-Also Viewed</span></h3>
+    <div id="alsoViewedItems" class="tui_items"></div>
+</div>
+
+<div class="tui_clear"></div>
+
+<script type="text/javascript" language="javascript" src="http://buy.yesky.com/js/jquery-1.4.2.min.js"></script>
+<link href="http://buy.yesky.com/css/all.css" charset="gbk" type="text/css" rel="stylesheet" />
+<link href="http://buy.yesky.com/css/pro.css" charset="gbk" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" language="javascript" charset="utf-8" src="http://api.tuijianbao.net/js/api-1.1.min.js"></script>
+<script type="text/javascript" language="javascript" charset="utf-8"src="http://api.tuijianbao.net/skin/yesky/ui-1.0.js"></script>
+<link type="text/css" rel="stylesheet" href="http://api.tuijianbao.net/skin/yesky/style-1.0.css" />
+
+<script type="text/javascript" language="javascript" >
+function loadTjbData(user_id){
+  var req = new tui.PackedRequest("a5d00fd2");
+  req.addSharedParams('user_id', 'null');
+  req.addSharedParams('include_item_info', 'yes');                         
+  req.addSharedParams('amount', '5');
+  
+  // 注意：应用变量替换如下值
+  req.addSharedParams('item_id', '665340002');   //617853002,665340002     // 商品id,字符串类型
+/*  req.addRequest("updateItem",                                           // 自动获取商品
+      {'item_name': "金士顿 DDR3 1333 4G 笔记本内存",                              // 商品名称
+       'item_link': "http://buy.yesky.com/product.action?productId=665340002", // 商品绝对路径
+       'image_link': "http://pimages.yesky.com/resources/btoc/mres/product/201108/19/6c226771eec448ffb02a64ac324ede8a_100x100.jpg",         
+                                                                           // 商品缩略图绝对路径
+       'market_price': "199.00",                                           // 商品原价，注意不带单位,字符串类型
+       'price': "139.00",                                                  // 商品优惠价，数值类型
+       'categories': "219"});                                              // 商品分类ID
+*/
+  req.addRequest("getBoughtTogether", {});                                 // 通货一起买的商品
+  req.addRequest("getUltimatelyBought", {});                               // 看过本商品后最终买的商品
+  req.addRequest("getAlsoBought", {});                                     // 还会买
+  req.addRequest("getAlsoViewed", {});                                     // 还会买
+  
+  req.invoke("tjbCallback");
+}
+
+loadTjbData();
+</script>
+
+</body>

@@ -4,12 +4,28 @@
 
 (function(window){
 
+String.prototype.Trim = function() 
+{ 
+    return this.replace(/(^\s*)|(\s*$)/g, ""); 
+} 
+ 
+String.prototype.LTrim = function() 
+{ 
+    return this.replace(/(^\s*)/g, ""); 
+} 
+ 
+String.prototype.RTrim = function() 
+{ 
+    return this.replace(/(\s*$)/g, ""); 
+} 
+
 function invokeRequest(url){
     var script = document.createElement('script');
     script.src = url;
     script.charset = "utf-8";
     script.async = true;
-    document.getElementsByTagName('script')[0].parentNode.insertBefore(script);
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(script, s);
 }
 
 /*
@@ -39,11 +55,12 @@ PackedRequest.prototype.addRequest = function(full_name, request) {
 };
 
 // Generated using ApiServer.packed_request.generateFULL_NAME_ATTR_NAME2FULL_ABBR_NAME_js
-FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
+var FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "rateItem:item_id" : "ri_i",
     "rateItem:score" : "ri_s",
     "rateItem:user_id" : "ri_u",
     "updateItem:categories" : "upic",
+    "updateItem:cateories" : "upic",
     "updateItem:description" : "upid",
     "updateItem:item_id" : "upii",
     "updateItem:image_link" : "upim",
@@ -65,6 +82,10 @@ FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getAlsoViewed:user_id" : "rcvu",
     "removeFavorite:item_id" : "rf_i",
     "removeFavorite:user_id" : "rf_u",
+    "updateCategory:category_id" : "upci",
+    "updateCategory:category_link" : "upcl",
+    "updateCategory:category_name" : "upcn",
+    "updateCategory:parent_categories" : "upcp",
     "getByShoppingCart:amount" : "rcca",
     "getByShoppingCart:include_item_info" : "rccc",
     "getByShoppingCart:shopping_cart" : "rccs",
@@ -73,6 +94,11 @@ FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "removeOrderItem:user_id" : "rscu",
     "addOrderItem:item_id" : "asci",
     "addOrderItem:user_id" : "ascu",
+    "getByEachBrowsedItem:amount_for_each_item" : "reba",
+    "getByEachBrowsedItem:include_item_info" : "rebc",
+    "getByEachBrowsedItem:rec_row_max_amount" : "rebr",
+    "getByEachBrowsedItem:user_id" : "rebu",
+    "getByEachBrowsedItem:browsing_history" : "rebh",
     "addFavorite:item_id" : "af_i",
     "addFavorite:user_id" : "af_u",
     "getByBrowsingHistory:amount" : "rcha",
@@ -82,6 +108,10 @@ FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "placeOrder:order_id" : "ploi",
     "placeOrder:order_content" : "ploo",
     "placeOrder:user_id" : "plou",
+    "getByEachPurchasedItem:amount_for_each_item" : "repa",
+    "getByEachPurchasedItem:include_item_info" : "repc",
+    "getByEachPurchasedItem:user_id" : "repu",
+    "getByEachPurchasedItem:rec_row_max_amount" : "rept",
     "removeItem:item_id" : "rmii",
     "viewItem:item_id" : "vi_i",
     "viewItem:user_id" : "vi_u",
@@ -91,47 +121,30 @@ FULL_NAME_ATTR_NAME2FULL_ABBR_NAME = {
     "getAlsoBought:user_id" : "rcbu",
     "getByPurchasingHistory:amount" : "rcpa",
     "getByPurchasingHistory:include_item_info" : "rcpc",
-    "getByPurchasingHistory:user_id" : "rcpu"};
+    "getByPurchasingHistory:user_id" : "rcpu"}
 
 
 // Generated using ApiServer.packed_request.generateFULL_NAME2MASK_js
-FULL_NAME2MASK = {
+var FULL_NAME2MASK = {
     "rateItem" : 8,
     "updateItem" : 128,
     "getBoughtTogether" : 2048,
     "getUltimatelyBought" : 4096,
     "getAlsoViewed" : 512,
     "removeFavorite" : 4,
+    "updateCategory" : 65536,
     "getByShoppingCart" : 32768,
     "removeOrderItem" : 32,
     "addOrderItem" : 16,
+    "getByEachBrowsedItem" : 131072,
     "addFavorite" : 2,
     "getByBrowsingHistory" : 8192,
     "placeOrder" : 64,
+    "getByEachPurchasedItem" : 262144,
     "removeItem" : 256,
     "viewItem" : 1,
     "getAlsoBought" : 1024,
-    "getByPurchasingHistory" : 16384};
-
-
-ALL_ATTR_NAMES = {
-    'user_id': 1,
-    'description': 1,
-    'item_name': 1,
-    'price': 1,
-    'order_content': 1,
-    'order_id': 1,
-    'amount': 1,
-    'image_link': 1,
-    'include_item_info': 1,
-    'market_price': 1,
-    'score': 1,
-    'item_id': 1,
-    'item_link': 1,
-    'browsing_history': 1,
-    'shopping_cart': 1,
-    'categories': 1
-};
+    "getByPurchasingHistory" : 16384}
 
 
 PackedRequest.prototype.getUrlArgs = function(callback) {
@@ -188,3 +201,7 @@ tui.PackedRequest = PackedRequest;
 window.tui = tui;
 
 })(window);
+
+function tjbCallback(data){
+    // should be overide
+}
