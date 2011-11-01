@@ -10,9 +10,9 @@ function itemTemplate(value) {
     line += '   <a href="' + value['item_link'] + '"><img src="' + value['image_link'] + '" alt="' + value['item_name'] + '" class="tui_image" /></a><br />';
     line += '   <p><a href="' + value['item_link'] + '" title="' + value['item_name'] + '">' + value['item_name'] + '</a></p>';
 
-    line += '<div class="tui_price"><b>' + value['price'] + '</b>';
+    line += '<div class="tui_price"><b>￥' + value['price'] + '</b>';
     if(typeof(value['market_price']) != 'undefined'){
-        line += ' | <del>' + value['market_price'] + '</del>';
+        line += ' | <del>￥' + value['market_price'] + '</del>';
     }
     line += '</div>';
     line += '</div>';
@@ -26,10 +26,10 @@ function vubItemTemplate(value) {
     line += '    <a href="' + value["item_link"] + '">';
     line += '    <img class="tui_image" src="' + value["image_link"] + '" alt="' + value["item_name"] + '" height="50" border="0">';
     line += '    <div class="tui_title">' + value["item_name"] + '</div></a>';
-    line += '    <div class="tui_price"><b>' + value["price"] + '</b>';
+    line += '    <div class="tui_price"><b>￥' + value["price"] + '</b>';
 
     if(typeof(value["market_price"]) != 'undefined'){
-        line += ' | <del>' + value["market_price"] + '</del>';
+        line += ' | <del>￥' + value["market_price"] + '</del>';
     }
     line += '    </div>';
     line += '  </div>';
