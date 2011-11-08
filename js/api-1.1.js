@@ -14,10 +14,10 @@ function invokeRequest(url){
 }
 
 /*
- * PackedRequest
+ * Point
  */
 // url_prefix is OPTIONAL, only for development purpose.
-function PackedRequest(api_key, url_prefix) {
+function Point(api_key, url_prefix) {
     this.shared_params = {}
     this.requests = []
 
@@ -31,11 +31,11 @@ function PackedRequest(api_key, url_prefix) {
 
 }
 
-PackedRequest.prototype.addSharedParams = function(param_name, param_value) {
+Point.prototype.addSharedParams = function(param_name, param_value) {
     this.shared_params["##" + param_name] = param_value;
 };
 
-PackedRequest.prototype.addRequest = function(full_name, request) {
+Point.prototype.addRequest = function(full_name, request) {
     this.requests.push([full_name, request]);
 };
 
@@ -136,7 +136,7 @@ var FULL_NAME2MASK = {
     "getByPurchasingHistory" : 16384}
 
 
-PackedRequest.prototype.getUrlArgs = function(callback) {
+Point.prototype.getUrlArgs = function(callback) {
     var url_args = {"##api_key": this.api_key, "##callback": callback};
     var request_mask_set = 0;
     for (var idx in this.requests) {
@@ -165,7 +165,7 @@ PackedRequest.prototype.getUrlArgs = function(callback) {
     return url_args;
 };
 
-PackedRequest.prototype.getFullUrl = function(callback) {
+Point.prototype.getFullUrl = function(callback) {
     var url_args = this.getUrlArgs(callback);
     var paramstr = "";
     for (var key in url_args) {
@@ -176,16 +176,29 @@ PackedRequest.prototype.getFullUrl = function(callback) {
     return this.url_prefix + "/packedRequest?" + paramstr;
 };
 
-PackedRequest.prototype.invoke = function(callback) {
+Point.prototype.invoke = function(callback) {
+    if("" == this.getBrowser() || "" == this.getOS()) return;
     var full_url = this.getFullUrl(callback);
     invokeRequest(full_url + "&" + new Date().getTime());
 };
+
+Point.prototype.getBrowser = function() {
+    var agent = navigator.userAgent;
+    return window.opera ? "Opera" : /chrom/i.test(agent) ? "Chrome" : /msie/i.test(agent) ? "Internet Explorer" : /AppleWebKit/.test(navigator.appVersion) ? "Safari" : /mozilla/i.test(agent) && !/compatible|webkit/i.test(agent) ? "Firefox" : ""
+}
+
+Point.prototype.getOS = function() {
+    var agent = navigator.userAgent;
+    return /Windows/i.test(agent) ? "Windows" : /iPhone/.test(agent) ? "iPhone" : /Android/.test(agent) ? "Android" : /Mac/i.test(agent) ? "Mac OS X" : /X11/.test(agent) || /Linux/.test(agent) ? "Linux" : ""
+}
+
 
 
 
 var tui = new Object();
 
-tui.PackedRequest = PackedRequest;
+tui.Point = Point;
+tui.PackedRequest = Point;
 
 window.tui = tui;
 
