@@ -1,7 +1,3 @@
-// Request
-// Behavior
-// Targeting
-
 (function(window){
 
 function invokeRequest(url){
