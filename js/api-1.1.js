@@ -169,7 +169,7 @@ Point.prototype.getFullUrl = function(callback) {
             paramstr += "&" + key.substring(2) + "=" + encodeURIComponent(url_args[key]);
         }
     }
-    return this.url_prefix + "/packedRequest?" + paramstr;
+    return this.url_prefix + "/point?" + paramstr;
 };
 
 Point.prototype.invoke = function(callback) {
