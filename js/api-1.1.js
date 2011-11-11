@@ -185,7 +185,7 @@ Point.prototype.getBrowser = function() {
 
 Point.prototype.getOS = function() {
     var agent = navigator.userAgent;
-    return /Windows/i.test(agent) ? "Windows" : /iPhone/.test(agent) ? "iPhone" : /Android/.test(agent) ? "Android" : /Mac/i.test(agent) ? "Mac OS X" : /X11/.test(agent) || /Linux/.test(agent) ? "Linux" : ""
+    return /Windows/i.test(agent) ? "Windows" : /iPad/.test(agent) ? "iPad" : /iPhone/.test(agent) ? "iPhone" : /Android/.test(agent) ? "Android" : /Mac/i.test(agent) ? "Mac OS X" : /X11/.test(agent) || /Linux/.test(agent) ? "Linux" : ""
 }
 
 
