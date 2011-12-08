@@ -173,7 +173,7 @@ Point.prototype.getFullUrl = function(callback) {
 };
 
 Point.prototype.invoke = function(callback) {
-    if("" == this.getBrowser() || "" == this.getOS()) return;
+    //if("" == this.getBrowser() || "" == this.getOS()) return;
     var full_url = this.getFullUrl(callback);
     invokeRequest(full_url + "&" + new Date().getTime());
 };
