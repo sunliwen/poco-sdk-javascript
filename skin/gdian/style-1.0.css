@@ -1,0 +1,51 @@
+.tui_items {
+    padding: 8px;
+}
+
+ul.tui_items{
+    list-style: none;
+}
+
+.tui_item {
+    float: left;
+    position: relative;
+    width: 135px;
+    margin-left: 12px;
+    overflow: hidden;
+}
+
+.tui_item p { text-align:left;margin-top:5px;margin-bottom:5px;}
+.tui_item p a{text-decoration:none;color:#666;font-size:12px;}
+.tui_item p a:hover{text-decoration:none;color:#F60;}
+.tui_item span{width:40px; height:40px; position:absolute;left:0px; top:0px;}
+
+.tui_item .tui_image{border:0;height:120px;float:center;}
+
+.tui_item_detail a{text-decoration:none;color:#666;font-size:12px;}
+.tui_item_detail a:hover{text-decoration:none;color:#F60;}
+
+.tui_item_detail .tui_title {margin-left: 55px;}
+.tui_item_detail .tui_price {margin-left: 55px;}
+
+.tui_item_detail .tui_image {
+    height: 50px;
+    margin:0 10px 0 0;
+    float:left;
+}
+
+div.tui_clear {display:none;height:10px;clear:both;font-size:0;line-height:0;}
+
+.tui_item .tui_price, .tui_item .tui_price b,.tui_item .tui_price del, 
+.tui_item_detail .tui_price, .tui_item_detail .tui_price b,.tui_item_detail .tui_price del{
+    font-size: 12px;
+}
+
+.tui_price b, .tui_price del {
+    color: #C00;
+    font-weight: 600;
+}
+
+.tui_item .tui_image,
+.tui_item_detail .tui_image {
+    border: 1px solid #F3F3F3;
+}
