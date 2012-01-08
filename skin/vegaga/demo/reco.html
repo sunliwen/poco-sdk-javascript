@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link href="themes/gdian/style_pink.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<style>
+
+.tui_wrapper{
+    clear: both;   
+}
+
+</style>
+
+<div class="tui_clear"></div>
+<h1>假设顾客在浏览 <a href="http://www.gdian.com/goods-516.html">西班牙万世私迷 猛男神奇液(持久型 延时喷剂)</a> </h1>
+<hr />
+
+<div class="tui_clear"></div>
+
+
+<div class="tui_wrapper" id="boughtTogetherWrapper" style="display:none">
+    <h3><span>经常一起购买的商品-Bought Together</span></h3>
+    <div id="boughtTogetherItems" class="tui_items"></div>
+</div>
+
+<div class="tui_clear"></div>
+
+<div class="tui_wrapper" id="viewedUltimatelyBoughtWrapper" style="display:none">
+    <h3><span>浏览过本商品的用户最终购买了-Ultimately Bought</span></h3>
+    <ul id="viewedUltimatelyBoughtItems" class="tui_items" style="display:block; padding: 8px"></ul>
+</div>
+
+<div class="tui_clear"></div>
+
+<div class="tui_wrapper" id="alsoBoughtWrapper" style="display:none">
+    <h3><span>购买过本商品的用户还购买过-Also Bought</span></h3>
+    <div id="alsoBoughtItems" class="tui_items"></div>
+</div>
+
+
+<div class="tui_wrapper" id="alsoViewedWrapper" style="display:none">
+    <h3><span>浏览过本商品的用户还浏览过-Also Viewed</span></h3>
+    <div id="alsoViewedItems" class="tui_items"></div>
+</div>
+
+<div class="tui_clear"></div>
+
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://api.tuijianbao.net/js/api-1.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://api.tuijianbao.net/skin/gdian/ui-1.0.js"></script>
+<link rel="stylesheet" type="text/css" href="http://api.tuijianbao.net/skin/gdian/style-1.0.css" />
+
+<script type="text/javascript" language="javascript" >
+function tjbSyncPage(user_id){
+  var req = new tui.PackedRequest("260f69c3");
+  req.addSharedParams('user_id', 'null');
+  req.addSharedParams('include_item_info', 'yes');                         
+  req.addSharedParams('amount', '5');
+  
+  // 注意：应用变量替换如下值
+  req.addSharedParams('item_id', '516');                                  // 商品id,字符串类型
+  //req.addRequest("updateItem",                                             // 自动获取商品
+  //    {'item_name': "双袋抽绳长裙",                                              // 商品名称
+  //     'item_link': "http://www.crucco.com/goods-2509.html",               // 商品绝对路径
+  //     'image_link': "http://i.crucco.net/images/ni/list/e/7e/00009580_1.jpg",         
+  //                                                                         // 商品缩略图绝对路径
+  //     'market_price': "369.00",                                           // 商品原价，注意不带单位,字符串类型
+  //     'price': "149.00",                                                  // 商品优惠价，数值类型
+  //     'categories': "771"});                                               // 商品分类ID
+
+  req.addRequest("getBoughtTogether", {});                                 // 通货一起买的商品
+  req.addRequest("getUltimatelyBought", {});                               // 看过本商品后最终买的商品
+  req.addRequest("getAlsoBought", {});                                     // 还会买
+  req.addRequest("getAlsoViewed", {});                                     // 还会买
+  
+  req.invoke("tjbCallback");
+}
+
+tjbSyncPage();
+</script>
+
+</body>
+</html>
