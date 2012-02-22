@@ -51,7 +51,7 @@
 
 .tui_item_detail .tui_price {
     margin-left: 50px;
-    width: 120px;
+    width: 200px;
 }
 
 
@@ -74,7 +74,7 @@ div.tui_clear {display:none;height:10px;clear:left;font-size:0;line-height:0;}
 .tui_price del{ color:#C00000;margin-top:5px;margin-bottom:5px;}
 
 .tui_item {
-width: 180px;
+width: 170px;
 margin: 10px 0px;
 padding: 0px;
 border-right: 1px dashed #DDD;
