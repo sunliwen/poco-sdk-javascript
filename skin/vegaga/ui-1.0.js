@@ -18,6 +18,28 @@ function itemTemplate(value) {
     return line;
 }
 
+
+function hItemTemplate(value) {
+/*
+    line  = '<div class="tui_item">';
+    line += '   <a href="' + value['item_link'] + '"><img src="' + value['image_link'] + '" alt="' + value['item_name'] + '" class="tui_image" /></a><br />';
+    line += '   <p><a href="' + value['item_link'] + '" title="' + value['item_name'] + '">' + value['item_name'] + '</a></p>';
+    line += '<div class="tui_price">价格：<b>￥' + value['price'] + '</b>';
+    line += '</div>';
+    line += '</div>';
+*/
+
+    line = '<li>';
+    line += '<a href="'+value['item_link']+'"><img src="' + value['image_link'] + '" width="150" height="150"></a>';
+    line += '<h3 style="padding-bottom:4px"><a href="'+value['item_link']+'">' + value['item_name'] + '</a></p>';
+    line += '<div class="price-n">';
+    line += '<span class="grayFont">  价格：</span><span class="price-font">￥' + value['price'] + '</span>';
+    line += '</div>';
+    line += '</li>';
+    return line;
+
+}
+
 function vavItemTemplate(value) {
     line  = '<div class="tui_item">';
     line += '   <a href="' + value['item_link'] + '"><img src="' + value['image_link'] + '" alt="' + value['item_name'] + '" class="tui_image" /></a><br />';
@@ -87,11 +109,11 @@ function callbackByViewedUltimatelyBought(json) {
     var topn = json['topn'];
     var output = '';
     jQuery.each(topn, function(index, value) { 
-        output += vubItemTemplate(value);
+        output += itemTemplate(value);
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#viewedUltimatelyBoughtWrapper").toggle();
+        jQuery("#viewedUltimatelyBoughtWrapper").show();
         jQuery("#viewedUltimatelyBoughtItems").html(output);
     }
 }
@@ -104,7 +126,7 @@ function callbackByShoppingCart(json) {
 
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#byShoppingCartWrapper").toggle();
+        jQuery("#byShoppingCartWrapper").show();
         jQuery("#byShoppingCartItems").html(output);
     }
 }
@@ -116,7 +138,7 @@ function callbackByPurchasingHistory(json) {
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#byPurchasingHistoryWrapper").toggle();
+        jQuery("#byPurchasingHistoryWrapper").show();
         jQuery("#byPurchasingHistoryItems").html(output);
     }
 }
@@ -128,7 +150,7 @@ function callbackByAlsoBought(json) {
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#alsoBoughtWrapper").toggle();
+        jQuery("#alsoBoughtWrapper").show();
         jQuery("#alsoBoughtItems").html(output);
     }
 }
@@ -140,7 +162,7 @@ function callbackByBoughtTogether(json) {
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#boughtTogetherWrapper").toggle();
+        jQuery("#boughtTogetherWrapper").show();
         jQuery("#boughtTogetherItems").html(output);
     }
 }
@@ -152,7 +174,7 @@ function callbackByAlsoViewed(json) {
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#alsoViewedWrapper").toggle();
+        jQuery("#alsoViewedWrapper").show();
         jQuery("#alsoViewedItems").html(output);
     }
 }
@@ -160,11 +182,11 @@ function callbackByHistory(json){
     var topn = json['topn'];
     var output = '';
     jQuery.each(topn, function(index, value) { 
-        output += itemTemplate(value);
+        output += hItemTemplate(value);
     });
     if(output.length >0){
         output += '<div class="clearbox"></div>';
-        jQuery("#byBrowsingHistoryWrapper").toggle();
+        jQuery("#byBrowsingHistoryWrapper").show();
         jQuery("#byBrowsingHistoryItems").html(output);
     }
 }
