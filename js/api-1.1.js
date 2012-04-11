@@ -19,7 +19,7 @@ function Point(api_key, url_prefix) {
 
     this.api_key = api_key;
     if (url_prefix === undefined || url_prefix === null) {
-        this.url_prefix = "http://api.tuijianbao.net/1.0";
+        this.url_prefix = "http://api.leyou.com.cn/1.0";
     }
     else {
         this.url_prefix = url_prefix;
