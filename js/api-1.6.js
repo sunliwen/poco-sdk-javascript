@@ -83,15 +83,10 @@ Poco.prototype.invoke = function(callback) {
     };
 };
 
-
-var tui = new Object();
-
-tui.Poco = Poco;
-
-window.tui = tui;
+window._poco = Poco;
 
 })(window);
 
-function tjbCallback(data){
+function pCallback(data){
     // should be overide
 }
