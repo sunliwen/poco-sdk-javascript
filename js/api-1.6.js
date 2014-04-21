@@ -13,13 +13,13 @@ function invokeRequest(url){
  * Poco
  */
 // url_prefix is OPTIONAL, only for development purpose.
-function Poco(api_key, url_prefix) {
-    this.shared_params = {}
-    this.requests = []
-
+function Poco(api_key, url_prefix, debug) {
+    this.shared_params = {};
+    this.requests = [];
+    this.debug = debug;
     this.api_key = api_key;
     if (url_prefix === undefined || url_prefix === null) {
-        this.url_prefix = "http://api.leyou.com.cn/1.0";
+        this.url_prefix = "http://search.tuijianbao.net/api/v1.6";
     }
     else {
         this.url_prefix = url_prefix;
@@ -53,7 +53,9 @@ Poco.prototype.getFullUrl = function(request_type, request, callback) {
             paramstr += "&" + key.substring(2) + "=" + encodeURIComponent(url_args[key]);
         }
     }
-
+    if (debug==true) {
+      paramstr += "&debug=true";
+    }
     if (request_type == "events") {
         return this.url_prefix + "/public/events/?" + paramstr;
     }
