@@ -46,7 +46,7 @@ Poco.prototype.getUrlArgs = function(request, callback) {
 
 Poco.prototype.getFullUrl = function(request_type, request, callback) {
     var url_args = this.getUrlArgs(request, callback);
-    console.log(url_args);
+    //console.log(url_args);
     var paramstr = "";
     for (var key in url_args) {
         if (key.substring(0, 2) == "##") {
