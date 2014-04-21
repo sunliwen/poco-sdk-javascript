@@ -10,10 +10,10 @@ function invokeRequest(url){
 }
 
 /*
- * Point
+ * Poco
  */
 // url_prefix is OPTIONAL, only for development purpose.
-function Point(api_key, url_prefix) {
+function Poco(api_key, url_prefix) {
     this.shared_params = {}
     this.requests = []
 
@@ -28,7 +28,7 @@ function Point(api_key, url_prefix) {
 }
 
 
-Point.prototype.getUrlArgs = function(request, callback) {
+Poco.prototype.getUrlArgs = function(request, callback) {
     var url_args = {"##api_key": this.api_key, "##callback": callback, "##format": "jsonp"};
     for (var idx in this.requests) {
         for (var key in request) {
@@ -44,7 +44,7 @@ Point.prototype.getUrlArgs = function(request, callback) {
     return url_args;
 };
 
-Point.prototype.getFullUrl = function(request_type, request, callback) {
+Poco.prototype.getFullUrl = function(request_type, request, callback) {
     var url_args = this.getUrlArgs(request, callback);
     console.log(url_args);
     var paramstr = "";
@@ -62,19 +62,19 @@ Point.prototype.getFullUrl = function(request_type, request, callback) {
     }
 };
 
-Point.prototype.addSharedParams = function(param_name, param_value) {
+Poco.prototype.addSharedParams = function(param_name, param_value) {
     this.shared_params["##" + param_name] = param_value;
 };
 
-Point.prototype.addEvent = function(request) {
+Poco.prototype.addEvent = function(request) {
     this.requests.push(["events", request]);
 };
 
-Point.prototype.addRecommender = function(request) {
+Poco.prototype.addRecommender = function(request) {
     this.requests.push(["recommender", request]);
 };
 
-Point.prototype.invoke = function(callback) {
+Poco.prototype.invoke = function(callback) {
     for (var idx in this.requests) {
         var request_type = this.requests[idx][0];
         var request = this.requests[idx][1];
@@ -83,22 +83,10 @@ Point.prototype.invoke = function(callback) {
     };
 };
 
-Point.prototype.getBrowser = function() {
-    var agent = navigator.userAgent;
-    return window.opera ? "Opera" : /chrom/i.test(agent) ? "Chrome" : /msie/i.test(agent) ? "Internet Explorer" : /AppleWebKit/.test(navigator.appVersion) ? "Safari" : /mozilla/i.test(agent) && !/compatible|webkit/i.test(agent) ? "Firefox" : ""
-}
-
-Point.prototype.getOS = function() {
-    var agent = navigator.userAgent;
-    return /Windows/i.test(agent) ? "Windows" : /iPad/.test(agent) ? "iPad" : /iPhone/.test(agent) ? "iPhone" : /Android/.test(agent) ? "Android" : /Mac/i.test(agent) ? "Mac OS X" : /X11/.test(agent) || /Linux/.test(agent) ? "Linux" : ""
-}
-
-
-
 
 var tui = new Object();
 
-tui.Point = Point;
+tui.Poco = Poco;
 
 window.tui = tui;
 
