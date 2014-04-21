@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../skin/ui-1.0.css">
+    </head>
+    <body>
+        <div id="alsoViewedWrapper">
+            <div id="alsoViewedItems" class="related cl">
+            </div>
+        </div>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" charset="utf-8" src="../js/api-1.6.js"></script>
+        <script type="text/javascript" language="javascript" charset="utf-8" src="../skin/ui-1.6.js"></script>
+        <script>
+            var p = new _poco("api_haoyaoshi", "http://0.0.0.0:2222/api/v1.6", true);
+            
+            p.addSharedParams('item_id', 'K890001100');
+            p.addSharedParams('user_id', 'U123');
+            p.addSharedParams('amount', '6');
+
+            p.addEvent({"event_type": "ViewItem"});
+            p.addRecommender({"type": "AlsoViewed", "debug": "1"});
+            p.invoke("pCallback");
+        </script>
+    </body>
+</html>

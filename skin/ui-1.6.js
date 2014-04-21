@@ -52,7 +52,7 @@ function vubItemTemplate(value) {
     return line;
 }
 
-function tjbCallback(data) {
+function pCallback(data) {
     if (data.code == 0) {
             var response_type = data.type;
             if (response_type == "AlsoViewed") {

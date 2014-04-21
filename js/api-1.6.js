@@ -53,7 +53,7 @@ Poco.prototype.getFullUrl = function(request_type, request, callback) {
             paramstr += "&" + key.substring(2) + "=" + encodeURIComponent(url_args[key]);
         }
     }
-    if (debug==true) {
+    if (this.debug==true) {
       paramstr += "&debug=true";
     }
     if (request_type == "events") {
