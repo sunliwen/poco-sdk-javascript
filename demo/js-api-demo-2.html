@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../skin/ui-1.0.css">
+    </head>
+    <body>
+        <div id="alsoViewedWrapper" style="display: none">
+            <div id="alsoViewedItems" class="related cl">
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div>
+            <ul class="cool-links">
+                <li><a href="https://www.google.com/?q=python">Python</a></li>
+                <li><a href="https://www.google.com/?q=java">Java</a></li>
+                <li><a href="https://www.google.com/?q=mongodb">Mongo</a></li>
+            </ul>
+        </div>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" charset="utf-8" src="../js/api-1.6.js"></script>
+        <script type="text/javascript" language="javascript" charset="utf-8" src="../skin/ui-1.6.js"></script>
+        <script>
+            var debug = true;
+            //var p = new _poco("fb86b045", "http://search.tuijianbao.net/api/v1.6", debug);
+            var p = new _poco("api_haoyaoshi", "http://0.0.0.0:2222/api/v1.6", debug);
+            p.setCallback("pCallback");
+            p.addSharedParams({'item_id': 'K890001100',
+                               'user_id': 'U123',
+                               'amount': '6'});
+
+            p.track("$ViewItem");
+            p.track("DepositeMoney", {"user_id": "U1", "amount": "50", "payment_method": "PayPal"});
+            p.track_links(".cool-links a");
+           p.recommend("AlsoViewed");
+        </script>
+    </body>
+</html>
