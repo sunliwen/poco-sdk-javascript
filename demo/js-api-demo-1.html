@@ -13,12 +13,17 @@
         <script>
             var debug = true;
             var p = new _poco("fb86b045", "http://search.tuijianbao.net/api/v1.6", debug);
-            
+
             p.addSharedParams('item_id', 'K890001100');
             p.addSharedParams('user_id', 'U123');
             p.addSharedParams('amount', '6');
 
+            // A reserved event.
             p.addEvent({"event_type": "ViewItem"});
+            // Example of a custom event
+            p.addEvent({"event_type": "DepositMoney", "user_id": "U1", 
+                        "amount": "50", "payment_method": "PayPal"})
+
             p.addRecommender({"type": "AlsoViewed"});
             p.invoke("pCallback");
         </script>

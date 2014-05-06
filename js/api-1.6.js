@@ -88,17 +88,13 @@ Poco.prototype.addSharedParams = function(param_name, param_value) {
     }
 };
 
-Poco.prototype.addEvent = function(request) {
-    //this.requests.push(["events", request]);
-    this._invoke("events", request);
-};
 
 Poco.prototype.track = function(event_type, content) {
     if (content == undefined) {
         var content = {};
     }
     content["event_type"] = event_type;
-    this.addEvent(content);
+    this._invokeRequest("events", content);
 };
 
 Poco.prototype.track_links = function(xpath) {
@@ -117,24 +113,46 @@ Poco.prototype.track_links = function(xpath) {
     });
 };
 
-Poco.prototype.addRecommender = function(request) {
-    //this.requests.push(["recommender", request]);
-    this._invoke("recommender", request);
-};
-
 Poco.prototype.recommend = function(recommender_type, content) {
     if (content == undefined) {
         var content = {};
     };
     content["type"] = recommender_type;
-    this.addRecommender(content);
+    this._invokeRequest("recommender", content);
 };
 
-Poco.prototype._invoke = function(request_type, request) {
-    var full_url = this.getFullUrl(request_type, request, this.callback);
-    console.log(request_type, request, full_url);
+
+Poco.prototype.addEvent = function(request) {
+    this.requests.push(["events", request]);
+};
+
+
+Poco.prototype.addRecommender = function(request) {
+    this.requests.push(["recommender", request]);
+};
+
+
+Poco.prototype._invokeRequest = function(request_type, request, callback) {
+    var the_callback = null;
+    if (callback == undefined) {
+        the_callback = this.callback;
+    }
+    else {
+        the_callback = callback;
+    };
+    var full_url = this.getFullUrl(request_type, request, the_callback);
     invokeRequest(full_url + "&" + new Date().getTime());
 }
+
+
+Poco.prototype.invoke = function(callback) {
+    for (var idx in this.requests) {
+        var request_type = this.requests[idx][0];
+        var request = this.requests[idx][1];
+        this._invokeRequest(request_type, request, callback);
+    };
+};
+
 
 window._poco = Poco;
 
