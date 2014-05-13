@@ -57,9 +57,7 @@ Poco.prototype.getUrlArgs = function(request, callback) {
 };
 
 Poco.prototype.getFullUrl = function(request_type, request, callback) {
-    console.log("R:", request);
     var url_args = this.getUrlArgs(request, callback);
-    console.log("UA:", url_args);
     var paramstr = "";
     for (var key in url_args) {
         if (key.substring(0, 2) == "##") {
@@ -108,7 +106,6 @@ Poco.prototype.track_links = function(css_selector, link_type, shared_params) {
     var super_this = this;
     $(css_selector).click(function(evt) {
         var url = this.href;
-        console.log("URL clicked" + url);
         event.preventDefault();
 
         var params = {"link_type": link_type,
@@ -118,7 +115,6 @@ Poco.prototype.track_links = function(css_selector, link_type, shared_params) {
         };
 
         var link_data = $(this).data();
-        console.log("link_data:", link_data);
         for (var data_key in link_data) {
             params[data_key] = link_data[data_key];
         };
