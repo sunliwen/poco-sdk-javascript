@@ -10,9 +10,9 @@
         <div style="clear: both;"></div>
         <div>
             <ul class="cool-links">
-                <li><a href="https://www.google.com/?q=python">Python</a></li>
-                <li><a href="https://www.google.com/?q=java">Java</a></li>
-                <li><a href="https://www.google.com/?q=mongodb">Mongo</a></li>
+                <li><a href="https://www.google.com/?q=python" data-item_id="I123">Python</a></li>
+                <li><a href="https://www.google.com/?q=java" data-item_id="I124">Java</a></li>
+                <li><a href="https://www.google.com/?q=mongodb" data-item_id="I125">Mongo</a></li>
             </ul>
         </div>
         <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
@@ -29,7 +29,7 @@
 
             p.track("$ViewItem");
             p.track("DepositeMoney", {"user_id": "U1", "amount": "50", "payment_method": "PayPal"});
-            p.track_links(".cool-links a");
+            p.track_links(".cool-links a", "SearchResult", {"q": "haoyaoshi", "page": "1"});
            p.recommend("AlsoViewed");
         </script>
     </body>

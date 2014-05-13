@@ -41,17 +41,18 @@ Poco.prototype.setOption = function(option_key, option_value) {
 
 Poco.prototype.getUrlArgs = function(request, callback) {
     var url_args = {"##api_key": this.api_key, "##callback": callback, "##format": "jsonp"};
-    //for (var idx in this.requests) {
-        for (var key in request) {
-            url_args["##" + key] = request[key];
-        }
-    //}
 
     for (var key in this.shared_params) {
             if (key.substring(0, 2) == "##") {
                 url_args[key] = this.shared_params[key];
             }
     }
+
+    // request params should override shared_params data
+    for (var key in request) {
+        url_args["##" + key] = request[key];
+    }
+
     return url_args;
 };
 
@@ -97,15 +98,32 @@ Poco.prototype.track = function(event_type, content) {
     this._invokeRequest("events", content);
 };
 
-Poco.prototype.track_links = function(xpath) {
+/*
+    css_selector: the css selector of links to track
+    link_type: the type of link. Example: the reserved type "SearchResult"
+    shared_params: the params shared by all click event among these links
+    If there are data-* attributes on the link, they would also be collected.
+*/
+Poco.prototype.track_links = function(css_selector, link_type, shared_params) {
     var super_this = this;
-    $(xpath).click(function(evt) {
+    $(css_selector).click(function(evt) {
         var url = this.href;
         console.log("URL clicked" + url);
-
         event.preventDefault();
-        super_this.track("$ClickLink", {"link_type": "$SearchResult",
-                                  "link_url": url});
+
+        var params = {"link_type": link_type,
+                      "url": url};
+        for (var param_name in shared_params) {
+            params[param_name] = shared_params[param_name];
+        };
+
+        var link_data = $(this).data();
+        console.log("link_data:", link_data);
+        for (var data_key in link_data) {
+            params[data_key] = link_data[data_key];
+        };
+
+        super_this.track("ClickLink", params);
 
         window.setTimeout(function() {
             window.location = url;
